@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frédéric Beucherie — Ostéopathe & Kinésithérapeute à Rennes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16211F;
+    --petrol-900:#0E2E2B;
+    --petrol-800:#153E3A;
+    --petrol-700:#1E4D49;
+    --petrol-500:#3E7C74;
+    --sage-200:#D6E4DB;
+    --sage-100:#E9F0EA;
+    --paper:#F5F3EC;
+    --paper-dim:#ECE8DD;
+    --amber-600:#B8763C;
+    --amber-500:#C68A4E;
+    --amber-100:#F1E1C8;
+    --white:#FFFFFF;
+    --line:#D9D3C3;
+    --shadow: 0 20px 50px -25px rgba(14,46,43,0.35);
+    --radius: 14px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--petrol-900);
+  }
+
+  a{ color:inherit; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  :focus-visible{
+    outline:2.5px solid var(--amber-600);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(245,243,236,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto; padding:14px 28px;
+    display:flex; align-items:center; gap:18px;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; margin-right:auto; }
+  .brand-mark{
+    width:40px; height:40px; border-radius:10px;
+    background:var(--petrol-800); color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Newsreader', serif; font-weight:600; font-size:1.05rem;
+    flex-shrink:0;
+  }
+  .brand-text{ line-height:1.15; }
+  .brand-name{ font-family:'Newsreader', serif; font-size:1.08rem; color:var(--petrol-900); }
+  .brand-role{ font-size:0.72rem; color:var(--petrol-500); text-transform:uppercase; letter-spacing:0.06em; }
+
+  .nav-links{ display:flex; gap:22px; list-style:none; margin:0; padding:0; }
+  .nav-links a{
+    text-decoration:none; font-size:0.9rem; color:var(--petrol-700); font-weight:600;
+    padding:6px 2px; border-bottom:2px solid transparent;
+  }
+  .nav-links a:hover{ border-bottom-color:var(--amber-500); }
+
+  .nav-phone{
+    font-size:0.85rem; font-weight:700; color:var(--petrol-800); text-decoration:none;
+    white-space:nowrap;
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    border-radius:999px; border:1.5px solid transparent;
+    font-weight:700; font-size:0.88rem; padding:11px 20px;
+    text-decoration:none; transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{ background:var(--amber-600); color:var(--white); box-shadow:var(--shadow); }
+  .btn-primary:hover{ transform:translateY(-1px); background:var(--amber-500); }
+  .btn-ghost{ border-color:var(--petrol-700); color:var(--petrol-800); background:transparent; }
+  .btn-ghost:hover{ background:var(--sage-100); }
+  .btn-sm{ padding:8px 16px; font-size:0.8rem; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    padding:88px 0 96px;
+    background:linear-gradient(180deg, var(--sage-100) 0%, var(--paper) 72%);
+  }
+  .hero-spine{
+    position:absolute; right:-6%; top:-8%; width:640px; max-width:60vw; opacity:0.55; pointer-events:none;
+  }
+  .hero-inner{ position:relative; max-width:640px; }
+  .eyebrow{
+    font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.09em;
+    color:var(--amber-600); margin-bottom:16px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 4.2vw, 3.15rem); line-height:1.08; margin-bottom:20px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--amber-600); }
+  .hero p.lede{
+    font-size:1.08rem; color:var(--petrol-700); max-width:520px; margin-bottom:30px;
+  }
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:34px; }
+  .credentials{
+    display:flex; flex-wrap:wrap; gap:10px 22px; font-size:0.82rem; color:var(--petrol-700);
+  }
+  .credentials span{ display:flex; align-items:center; gap:7px; }
+  .credentials .dot{ width:6px; height:6px; border-radius:50%; background:var(--amber-500); flex-shrink:0; }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section{ padding:78px 0; border-top:1px solid var(--line); }
+  .section-head{ max-width:640px; margin-bottom:38px; }
+  .section-head .eyebrow{ margin-bottom:10px; }
+  .section-head h2{ font-size:clamp(1.6rem, 3vw, 2.1rem); margin-bottom:12px; }
+  .section-head p{ color:var(--petrol-700); font-size:1rem; }
+
+  /* ---------- FILTERS / OVERVIEW ---------- */
+  .filters{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:34px; }
+  .chip{
+    border:1.5px solid var(--petrol-700); background:transparent; color:var(--petrol-800);
+    border-radius:999px; padding:9px 16px; font-size:0.84rem; font-weight:600;
+    transition:background .15s ease, color .15s ease;
+  }
+  .chip.active{ background:var(--petrol-800); color:var(--white); }
+  .chip:hover{ background:var(--sage-200); }
+  .chip.active:hover{ background:var(--petrol-700); }
+
+  .card-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:18px;
+  }
+  .card{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px; display:flex; flex-direction:column; gap:12px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{ transform:translateY(-3px); box-shadow:var(--shadow); }
+  .card.hidden{ display:none; }
+  .card-tag{ font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--amber-600); font-weight:700; }
+  .card h3{ font-size:1.12rem; color:var(--petrol-900); }
+  .card p{ font-size:0.9rem; color:var(--petrol-700); flex-grow:1; margin:0; }
+  .card-action{
+    align-self:flex-start; background:none; border:none; color:var(--petrol-800);
+    font-weight:700; font-size:0.84rem; padding:0; text-decoration:underline; text-underline-offset:3px;
+  }
+  .card-action:hover{ color:var(--amber-600); }
+  .empty-state{ display:none; color:var(--petrol-700); font-size:0.95rem; padding:20px 0; }
+
+  /* ---------- PRATICIEN ---------- */
+  .praticien-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:44px; align-items:center; }
+  .praticien-photo{ border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+  .praticien-photo img{ width:100%; display:block; }
+  .praticien-copy p{ color:var(--petrol-700); margin:0 0 16px; }
+  .praticien-copy p:last-child{ margin-bottom:0; }
+
+  /* ---------- AVIS ---------- */
+  .avis-head{ display:flex; align-items:baseline; gap:12px; margin-bottom:30px; flex-wrap:wrap; }
+  .stars{ color:var(--amber-600); letter-spacing:2px; }
+  .avis-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:18px; }
+  .avis-card{ background:var(--sage-100); border-radius:var(--radius); padding:22px; }
+  .avis-card p{ margin:0 0 14px; color:var(--petrol-800); font-size:0.94rem; }
+  .avis-name{ font-size:0.82rem; font-weight:700; color:var(--petrol-700); }
+
+  /* ---------- INFOS PRATIQUES ---------- */
+  .infos-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:26px; }
+  .infos-item .label{ font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--amber-600); font-weight:700; margin-bottom:8px; display:block; }
+  .infos-item p{ margin:0; color:var(--petrol-800); font-size:0.94rem; }
+  .infos-item ul{ margin:0; padding-left:18px; color:var(--petrol-800); font-size:0.9rem; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ border-top:1px solid var(--line); padding:34px 0; }
+  .footer-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.8rem; color:var(--petrol-700); }
+
+  /* ---------- FAB ---------- */
+  .fab{
+    position:fixed; right:24px; bottom:24px; z-index:50;
+    display:flex; align-items:center; gap:10px;
+    background:var(--petrol-800); color:var(--white); border:none;
+    border-radius:999px; padding:15px 22px; font-weight:700; font-size:0.9rem;
+    box-shadow:0 14px 30px -12px rgba(14,46,43,0.55);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .fab:hover{ transform:translateY(-2px); background:var(--petrol-700); }
+
+  /* ---------- MODAL / BOOKING WIDGET ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(14,30,28,0.55); z-index:60;
+    display:none; align-items:flex-end; justify-content:center;
+  }
+  .overlay.open{ display:flex; }
+  @media (min-width:720px){ .overlay{ align-items:center; } }
+
+  .modal{
+    background:var(--white); width:100%; max-width:560px; max-height:92vh; overflow-y:auto;
+    border-radius:20px 20px 0 0; padding:30px 28px 28px;
+    box-shadow:0 30px 70px -20px rgba(0,0,0,0.4);
+  }
+  @media (min-width:720px){ .modal{ border-radius:20px; } }
+
+  .modal-head{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:6px; }
+  .modal-head h3{ font-size:1.3rem; }
+  .modal-close{ background:none; border:none; font-size:1.4rem; line-height:1; color:var(--petrol-700); padding:4px; }
+
+  .progress{ display:flex; gap:6px; margin:18px 0 26px; }
+  .progress span{ height:4px; flex:1; border-radius:2px; background:var(--line); }
+  .progress span.done{ background:var(--amber-600); }
+
+  .step{ display:none; }
+  .step.active{ display:block; animation:fadeIn .25s ease; }
+  @keyframes fadeIn{ from{ opacity:0; transform:translateY(6px);} to{ opacity:1; transform:none; } }
+
+  .step-title{ font-size:1.05rem; color:var(--petrol-900); margin-bottom:4px; font-weight:600; }
+  .step-sub{ font-size:0.85rem; color:var(--petrol-700); margin-bottom:20px; }
+
+  .option-grid{ display:grid; gap:10px; }
+  .option-grid.cols-2{ grid-template-columns:1fr 1fr; }
+  @media (max-width:420px){ .option-grid.cols-2{ grid-template-columns:1fr; } }
+
+  .option{
+    text-align:left; border:1.5px solid var(--line); background:var(--paper);
+    border-radius:12px; padding:14px 16px; font-weight:600; font-size:0.92rem; color:var(--petrol-800);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .option small{ display:block; font-weight:500; color:var(--petrol-700); font-size:0.78rem; margin-top:3px; }
+  .option:hover{ border-color:var(--petrol-500); }
+  .option.selected{ border-color:var(--amber-600); background:var(--amber-100); }
+
+  .suggested-badge{
+    display:inline-block; font-size:0.68rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.04em; background:var(--sage-200); color:var(--petrol-800);
+    border-radius:999px; padding:3px 9px; margin-bottom:14px;
+  }
+
+  .day-tabs{ display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+  .day-tab{
+    border:1.5px solid var(--line); background:var(--paper); border-radius:10px;
+    padding:8px 12px; font-size:0.82rem; font-weight:600; color:var(--petrol-800);
+  }
+  .day-tab.active{ border-color:var(--petrol-800); background:var(--petrol-800); color:var(--white); }
+
+  .slot-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; }
+  .slot{
+    border:1.5px solid var(--line); background:var(--paper); border-radius:10px;
+    padding:11px 8px; font-size:0.86rem; font-weight:600; color:var(--petrol-800); text-align:center;
+  }
+  .slot:hover{ border-color:var(--petrol-500); }
+  .slot.selected{ border-color:var(--amber-600); background:var(--amber-100); }
+  .slot.taken{ opacity:0.35; text-decoration:line-through; pointer-events:none; }
+
+  .field{ margin-bottom:16px; }
+  .field label{ display:block; font-size:0.82rem; font-weight:700; color:var(--petrol-800); margin-bottom:6px; }
+  .field input, .field textarea{
+    width:100%; border:1.5px solid var(--line); border-radius:10px; padding:11px 13px;
+    font-family:inherit; font-size:0.92rem; background:var(--paper);
+  }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--petrol-500); }
+  .checkline{ display:flex; align-items:center; gap:9px; font-size:0.88rem; color:var(--petrol-800); margin-bottom:18px; }
+
+  .step-actions{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:12px; }
+  .link-back{ background:none; border:none; color:var(--petrol-700); font-weight:600; font-size:0.86rem; padding:6px 0; }
+
+  .confirm-box{ text-align:center; padding:14px 0 6px; }
+  .confirm-icon{
+    width:56px; height:56px; border-radius:50%; background:var(--sage-200); color:var(--petrol-800);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 18px; font-size:1.5rem;
+  }
+  .recap{
+    text-align:left; background:var(--paper); border-radius:12px; padding:16px 18px; margin:20px 0;
+    font-size:0.88rem; color:var(--petrol-800);
+  }
+  .recap div{ display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px dashed var(--line); }
+  .recap div:last-child{ border-bottom:none; }
+  .recap span:first-child{ color:var(--petrol-700); }
+  .recap span:last-child{ font-weight:700; }
+
+  .disabled{ opacity:0.45; pointer-events:none; }
+
+  @media (max-width:860px){
+    .nav-links{ display:none; }
+    .hero{ padding:64px 0 70px; }
+    .praticien-grid{ grid-template-columns:1fr; }
+    .praticien-photo{ order:-1; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#accueil" class="brand">
+      <span class="brand-mark">FB</span>
+      <span class="brand-text">
+        <span class="brand-name" style="display:block;">Frédéric Beucherie</span>
+        <span class="brand-role">Ostéopathe D.O. · Kinésithérapeute</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#vue-densemble">Vue d'ensemble</a></li>
+      <li><a href="#praticien">Le praticien</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#infos">Infos pratiques</a></li>
+    </ul>
+    <a class="nav-phone" href="tel:0230964207">02 30 96 42 07</a>
+    <button class="btn btn-primary btn-sm" onclick="openBooking()">Prendre RDV</button>
+  </div>
+</nav>
+
+<header class="hero" id="accueil">
+  <svg class="hero-spine" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M60 10 C 180 60, 40 140, 160 190 C 280 240, 100 300, 220 350 C 320 390, 200 440, 300 490"
+          stroke="#3E7C74" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="60" cy="10" r="5" fill="#B8763C"/>
+    <circle cx="160" cy="190" r="5" fill="#3E7C74"/>
+    <circle cx="220" cy="350" r="5" fill="#B8763C"/>
+    <circle cx="300" cy="490" r="5" fill="#3E7C74"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Cabinet à Rennes · Longs Champs</span>
+    <h1>Retrouver le mouvement, <em>sans</em> se battre pour un rendez-vous.</h1>
+    <p class="lede">Consultations d'ostéopathie et de kinésithérapie du lundi au vendredi, au sein de la maison médicale du 6 square René Cassin. Nouveaux patients bienvenus.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-primary" onclick="openBooking()">Prendre rendez-vous</button>
+      <a class="btn btn-ghost" href="tel:0230964207">Appeler le cabinet</a>
+    </div>
+    <div class="credentials">
+      <span><span class="dot"></span>Ostéopathe D.O. depuis 2008</span>
+      <span><span class="dot"></span>Kinésithérapeute conventionné</span>
+      <span><span class="dot"></span>Carte vitale acceptée</span>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="vue-densemble">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Vue d'ensemble</span>
+      <h2>Trouvez votre motif de consultation</h2>
+      <p>Filtrez le cabinet par profil pour accéder directement à l'information qui vous concerne — puis réservez le créneau adapté en un clic.</p>
+    </div>
+
+    <div class="filters" id="filterBar">
+      <button class="chip active" data-filter="tous">Tous</button>
+      <button class="chip" data-filter="douleurs">Douleurs &amp; posture</button>
+      <button class="chip" data-filter="sport">Sport</button>
+      <button class="chip" data-filter="respiratoire">Respiratoire</button>
+      <button class="chip" data-filter="postop">Post-opératoire</button>
+      <button class="chip" data-filter="enfants">Enfants &amp; nourrissons</button>
+      <button class="chip" data-filter="urgence">Urgence</button>
+    </div>
+
+    <div class="card-grid" id="cardGrid">
+      <article class="card" data-tags="douleurs">
+        <span class="card-tag">Ostéopathie</span>
+        <h3>Douleurs de dos &amp; cervicales</h3>
+        <p>Séance manuelle pour soulager les tensions posturales du quotidien, au bureau comme à la maison.</p>
+        <button class="card-action" onclick="quickBook('Douleurs de dos & cervicales')">Réserver ce motif →</button>
+      </article>
+      <article class="card" data-tags="sport">
+        <span class="card-tag">Ostéopathie &amp; kiné</span>
+        <h3>Suivi sportif</h3>
+        <p>Prévention des blessures, récupération et optimisation du geste pour les sportifs amateurs et confirmés.</p>
+        <button class="card-action" onclick="quickBook('Suivi sportif')">Réserver ce motif →</button>
+      </article>
+      <article class="card" data-tags="respiratoire,enfants">
+        <span class="card-tag">Kinésithérapie</span>
+        <h3>Kinésithérapie respiratoire</h3>
+        <p>Prise en charge des encombrements bronchiques, adultes et enfants, sur prescription médicale.</p>
+        <button class="card-action" onclick="quickBook('Kinésithérapie respiratoire')">Réserver ce motif →</button>
+      </article>
+      <article class="card" data-tags="postop">
+        <span class="card-tag">Kinésithérapie</span>
+        <h3>Rééducation post-opératoire</h3>
+        <p>Accompagnement après chirurgie orthopédique, en lien avec votre chirurgien et votre médecin traitant.</p>
+        <button class="card-action" onclick="quickBook('Rééducation post-opératoire')">Réserver ce motif →</button>
+      </article>
+      <article class="card" data-tags="enfants">
+        <span class="card-tag">Ostéopathie</span>
+        <h3>Suivi nourrisson</h3>
+        <p>Consultation adaptée aux tout-petits, en complément du suivi pédiatrique habituel.</p>
+        <button class="card-action" onclick="quickBook('Suivi nourrisson')">Réserver ce motif →</button>
+      </article>
+      <article class="card" data-tags="urgence,douleurs">
+        <span class="card-tag">Sans rendez-vous préalable</span>
+        <h3>Besoin urgent</h3>
+        <p>Blocage aigu, lumbago : contactez le cabinet, un rappel rapide vous est proposé selon la gravité.</p>
+        <button class="card-action" onclick="quickBook('Besoin urgent')">Demander un rappel →</button>
+      </article>
+    </div>
+    <p class="empty-state" id="emptyState">Aucun motif ne correspond à ce filtre pour le moment — appelez directement le cabinet au 02 30 96 42 07.</p>
+  </div>
+</section>
+
+<section class="section" id="praticien">
+  <div class="wrap praticien-grid">
+    <div class="praticien-copy">
+      <span class="eyebrow">Le praticien</span>
+      <h2 style="margin-bottom:18px;">Frédéric Beucherie</h2>
+      <p>Formé initialement à la masso-kinésithérapie en 2002, Frédéric Beucherie obtient son diplôme d'ostéopathe en 2008 au Campus Ker Lann. Il exerce depuis au sein de la maison médicale du quartier Longs Champs, à Rennes.</p>
+      <p>Le cabinet accueille aussi bien les nouveaux patients que les suivis réguliers, pour des séances de kinésithérapie classique ou des consultations d'ostéopathie, sur rendez-vous du lundi au vendredi.</p>
+    </div>
+    <div class="praticien-photo">
+      <img src="https://www.osteopathe-beucherie-rennes.fr/wp-content/uploads/2022/11/close-up-of-physiotherapist-working-with-patient-in-clinic-scaled.jpg" alt="Séance de kinésithérapie au cabinet de Frédéric Beucherie">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="avis">
+  <div class="wrap">
+    <div class="avis-head">
+      <h2>Ce qu'en disent les patients</h2>
+      <span class="stars">★★★★★</span>
+      <span style="color:var(--petrol-700); font-size:0.88rem;">Excellent — avis Google</span>
+    </div>
+    <div class="avis-grid">
+      <div class="avis-card">
+        <p>« Un accueil très professionnel, je recommande sans hésiter. »</p>
+        <span class="avis-name">Fabrice Menant</span>
+      </div>
+      <div class="avis-card">
+        <p>« Un praticien kiné-ostéo à l'écoute et sympathique. »</p>
+        <span class="avis-name">Nadège Cadic</span>
+      </div>
+      <div class="avis-card">
+        <p>« Agréable, à l'écoute et professionnel — un bon kiné-ostéopathe. »</p>
+        <span class="avis-name">Caprica</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="infos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Infos pratiques</span>
+      <h2>Venir au cabinet</h2>
+    </div>
+    <div class="infos-grid">
+      <div class="infos-item">
+        <span class="label">Adresse</span>
+        <p>Maison médicale<br>6 square René Cassin<br>35000 Rennes</p>
+      </div>
+      <div class="infos-item">
+        <span class="label">Horaires</span>
+        <p>Lundi – Vendredi<br>8h – 19h</p>
+      </div>
+      <div class="infos-item">
+        <span class="label">En bus</span>
+        <ul>
+          <li>Lignes 34, 50, C4, 41ex — arrêt ZA Saint-Sulpice</li>
+          <li>Ligne C1 — arrêt Longs Champs</li>
+          <li>Lignes C4, 150ex, 34 — arrêt Longs Champs Est</li>
+        </ul>
+      </div>
+      <div class="infos-item">
+        <span class="label">Paiement</span>
+        <p>Carte vitale acceptée (cabinet conventionné)<br>CB, espèces, chèques</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© Frédéric Beucherie — Ostéopathe &amp; Kinésithérapeute, Rennes</span>
+    <span>Prototype de refonte réalisé à titre de démonstration</span>
+  </div>
+</footer>
+
+<button class="fab" onclick="openBooking()" aria-haspopup="dialog">
+  <span aria-hidden="true">📅</span> Prendre RDV
+</button>
+
+<!-- ============= BOOKING MODAL ============= -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modalTitle">Prendre rendez-vous</h3>
+      <button class="modal-close" aria-label="Fermer" onclick="closeBooking()">✕</button>
+    </div>
+    <div class="progress">
+      <span id="p1"></span><span id="p2"></span><span id="p3"></span><span id="p4"></span>
+    </div>
+
+    <!-- STEP 1 : MOTIF -->
+    <div class="step active" data-step="1">
+      <div class="step-title">Quel est le motif de votre venue ?</div>
+      <div class="step-sub">Sélectionnez ce qui correspond le mieux à votre besoin.</div>
+      <div class="option-grid cols-2" id="motifOptions">
+        <button class="option" data-value="Douleurs de dos & cervicales">Douleurs de dos &amp; cervicales</button>
+        <button class="option" data-value="Suivi sportif">Sport &amp; performance</button>
+        <button class="option" data-value="Kinésithérapie respiratoire">Respiratoire</button>
+        <button class="option" data-value="Rééducation post-opératoire">Post-opératoire</button>
+        <button class="option" data-value="Suivi nourrisson">Suivi nourrisson</button>
+        <button class="option" data-value="Autre">Autre motif</button>
+      </div>
+      <div class="step-actions">
+        <span></span>
+        <button class="btn btn-primary" id="next1" onclick="goStep(2)" disabled>Continuer</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 : TYPE DE SEANCE -->
+    <div class="step" data-step="2">
+      <div class="step-title">Kinésithérapie ou ostéopathie ?</div>
+      <div class="step-sub" id="suggestionText">Choisissez le type de séance souhaité.</div>
+      <div class="option-grid" id="typeOptions">
+        <button class="option" data-value="Kinésithérapie">Séance de kinésithérapie<small>Sur prescription médicale</small></button>
+        <button class="option" data-value="Ostéopathie">Séance d'ostéopathie<small>Sans prescription nécessaire</small></button>
+        <button class="option" data-value="Je laisse le praticien choisir">Je laisse le praticien choisir<small>Frédéric Beucherie orientera la séance</small></button>
+      </div>
+      <div class="step-actions">
+        <button class="link-back" onclick="goStep(1)">← Retour</button>
+        <button class="btn btn-primary" id="next2" onclick="goStep(3)" disabled>Continuer</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 : CRENEAU -->
+    <div class="step" data-step="3">
+      <div class="step-title">Choisissez un créneau</div>
+      <div class="step-sub">Créneaux indicatifs — à synchroniser avec l'agenda réel du cabinet.</div>
+      <div class="day-tabs" id="dayTabs">
+        <button class="day-tab active" data-day="Lundi">Lun</button>
+        <button class="day-tab" data-day="Mardi">Mar</button>
+        <button class="day-tab" data-day="Mercredi">Mer</button>
+        <button class="day-tab" data-day="Jeudi">Jeu</button>
+        <button class="day-tab" data-day="Vendredi">Ven</button>
+      </div>
+      <div class="slot-grid" id="slotGrid"></div>
+      <div class="step-actions">
+        <button class="link-back" onclick="goStep(2)">← Retour</button>
+        <button class="btn btn-primary" id="next3" onclick="goStep(4)" disabled>Continuer</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 : COORDONNEES -->
+    <div class="step" data-step="4">
+      <div class="step-title">Vos coordonnées</div>
+      <div class="step-sub">Le cabinet vous confirme le rendez-vous par téléphone.</div>
+      <div class="field">
+        <label for="fName">Nom complet</label>
+        <input type="text" id="fName" placeholder="Prénom et nom">
+      </div>
+      <div class="field">
+        <label for="fPhone">Téléphone</label>
+        <input type="tel" id="fPhone" placeholder="06 00 00 00 00">
+      </div>
+      <div class="field">
+        <label for="fMsg">Message (facultatif)</label>
+        <textarea id="fMsg" rows="2" placeholder="Précisions utiles pour le praticien"></textarea>
+      </div>
+      <label class="checkline"><input type="checkbox" id="fNew"> Je suis un nouveau patient</label>
+      <div class="step-actions">
+        <button class="link-back" onclick="goStep(3)">← Retour</button>
+        <button class="btn btn-primary" onclick="submitBooking()">Envoyer ma demande</button>
+      </div>
+    </div>
+
+    <!-- STEP 5 : CONFIRMATION -->
+    <div class="step" data-step="5">
+      <div class="confirm-box">
+        <div class="confirm-icon">✓</div>
+        <div class="step-title">Demande envoyée</div>
+        <div class="step-sub">Le cabinet vous rappelle sous 24h pour confirmer ce créneau.</div>
+        <div class="recap" id="recapBox"></div>
+        <a class="btn btn-ghost" href="https://www.doctolib.fr/masseur-kinesitherapeute/rennes/frederic-beucherie" target="_blank" rel="noopener" style="margin-right:10px;">Voir sur Doctolib</a>
+        <button class="btn btn-primary" onclick="closeBooking()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const booking = { motif:null, type:null, day:'Lundi', slot:null };
+
+  const slotsByDay = {
+    Lundi:    ['9h00','10h30','14h00','15h30','17h00','18h15'],
+    Mardi:    ['8h30','9h45','11h00','14h30','16h00'],
+    Mercredi: ['9h00','10h15','14h00','15h15','16h30','18h00'],
+    Jeudi:    ['8h30','10h00','13h30','15h00','16h45'],
+    Vendredi: ['9h00','10h30','11h45','14h30','17h30'],
+  };
+  const taken = { Lundi:['14h00'], Mardi:['9h45'], Mercredi:['15h15'], Jeudi:[], Vendredi:['11h45'] };
+
+  const suggestions = {
+    'Douleurs de dos & cervicales':'Ostéopathie',
+    'Suivi sportif':'Ostéopathie',
+    'Kinésithérapie respiratoire':'Kinésithérapie',
+    'Rééducation post-opératoire':'Kinésithérapie',
+    'Suivi nourrisson':'Ostéopathie',
+    'Autre':null,
+  };
+
+  function openBooking(){
+    document.getElementById('overlay').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeBooking(){
+    document.getElementById('overlay').classList.remove('open');
+    document.body.style.overflow='';
+    resetBooking();
+  }
+  function resetBooking(){
+    booking.motif=null; booking.type=null; booking.slot=null; booking.day='Lundi';
+    document.querySelectorAll('.option').forEach(o=>o.classList.remove('selected'));
+    document.getElementById('next1').disabled = true;
+    document.getElementById('next2').disabled = true;
+    document.getElementById('next3').disabled = true;
+    document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelector('.day-tab[data-day="Lundi"]').classList.add('active');
+    renderSlots('Lundi');
+    goStep(1);
+  }
+
+  function goStep(n){
+    document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+    document.querySelector('.step[data-step="'+n+'"]').classList.add('active');
+    for(let i=1;i<=4;i++){
+      document.getElementById('p'+i).classList.toggle('done', i<=n);
+    }
+    if(n===3) renderSlots(booking.day);
+  }
+
+  function quickBook(motif){
+    resetBooking();
+    openBooking();
+    const btn = [...document.querySelectorAll('#motifOptions .option')].find(o=>o.dataset.value===motif);
+    if(btn) selectMotif(btn, motif);
+    goStep(2);
+  }
+
+  function selectMotif(el, value){
+    document.querySelectorAll('#motifOptions .option').forEach(o=>o.classList.remove('selected'));
+    el.classList.add('selected');
+    booking.motif = value;
+    document.getElementById('next1').disabled = false;
+    const sug = suggestions[value];
+    const txt = document.getElementById('suggestionText');
+    txt.innerHTML = sug ? 'Suggestion pour ce motif : <strong>'+sug+'</strong>. Vous pouvez modifier ce choix.' : 'Choisissez le type de séance souhaité.';
+  }
+
+  document.querySelectorAll('#motifOptions .option').forEach(btn=>{
+    btn.addEventListener('click', ()=> selectMotif(btn, btn.dataset.value));
+  });
+
+  document.querySelectorAll('#typeOptions .option').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('#typeOptions .option').forEach(o=>o.classList.remove('selected'));
+      btn.classList.add('selected');
+      booking.type = btn.dataset.value;
+      document.getElementById('next2').disabled = false;
+    });
+  });
+
+  document.querySelectorAll('.day-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      booking.day = tab.dataset.day;
+      booking.slot = null;
+      document.getElementById('next3').disabled = true;
+      renderSlots(booking.day);
+    });
+  });
+
+  function renderSlots(day){
+    const grid = document.getElementById('slotGrid');
+    grid.innerHTML='';
+    slotsByDay[day].forEach(s=>{
+      const b = document.createElement('button');
+      b.className='slot'+(taken[day].includes(s) ? ' taken':'');
+      b.textContent=s;
+      b.disabled = taken[day].includes(s);
+      b.addEventListener('click', ()=>{
+        document.querySelectorAll('.slot').forEach(x=>x.classList.remove('selected'));
+        b.classList.add('selected');
+        booking.slot = s;
+        document.getElementById('next3').disabled = false;
+      });
+      grid.appendChild(b);
+    });
+  }
+
+  function submitBooking(){
+    const name = document.getElementById('fName').value || '—';
+    const phone = document.getElementById('fPhone').value || '—';
+    const isNew = document.getElementById('fNew').checked ? 'Oui' : 'Non';
+    document.getElementById('recapBox').innerHTML = `
+      <div><span>Motif</span><span>${booking.motif||'—'}</span></div>
+      <div><span>Type de séance</span><span>${booking.type||'—'}</span></div>
+      <div><span>Créneau</span><span>${booking.day} · ${booking.slot||'—'}</span></div>
+      <div><span>Nom</span><span>${name}</span></div>
+      <div><span>Téléphone</span><span>${phone}</span></div>
+      <div><span>Nouveau patient</span><span>${isNew}</span></div>
+    `;
+    goStep(5);
+  }
+
+  // ---------- FILTERS ----------
+  const filterBar = document.getElementById('filterBar');
+  const cards = [...document.querySelectorAll('#cardGrid .card')];
+  let activeFilters = new Set();
+
+  filterBar.addEventListener('click', (e)=>{
+    const chip = e.target.closest('.chip');
+    if(!chip) return;
+    const f = chip.dataset.filter;
+
+    if(f==='tous'){
+      activeFilters.clear();
+      filterBar.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+    } else {
+      filterBar.querySelector('[data-filter="tous"]').classList.remove('active');
+      chip.classList.toggle('active');
+      if(chip.classList.contains('active')) activeFilters.add(f);
+      else activeFilters.delete(f);
+      if(activeFilters.size===0) filterBar.querySelector('[data-filter="tous"]').classList.add('active');
+    }
+    applyFilters();
+  });
+
+  function applyFilters(){
+    let visible = 0;
+    cards.forEach(card=>{
+      const tags = card.dataset.tags.split(',');
+      const show = activeFilters.size===0 || tags.some(t=>activeFilters.has(t));
+      card.classList.toggle('hidden', !show);
+      if(show) visible++;
+    });
+    document.getElementById('emptyState').style.display = visible===0 ? 'block':'none';
+  }
+
+  renderSlots('Lundi');
+</script>
+
+</body>
+</html>
